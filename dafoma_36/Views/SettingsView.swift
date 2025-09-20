@@ -196,32 +196,6 @@ struct SettingsView: View {
     private func AboutSection() -> some View {
         SettingsSection(title: "About") {
             VStack(spacing: 0) {
-                SettingsNavigationRow(
-                    title: "Privacy Policy",
-                    description: "How we handle your personal information"
-                ) {
-                    // Handle privacy policy
-                }
-                
-                Divider().background(Color.white.opacity(0.1))
-                
-                SettingsNavigationRow(
-                    title: "Terms of Service",
-                    description: "Terms and conditions of using LexiQuest"
-                ) {
-                    // Handle terms of service
-                }
-                
-                Divider().background(Color.white.opacity(0.1))
-                
-                SettingsNavigationRow(
-                    title: "Contact Support",
-                    description: "Get help and send feedback"
-                ) {
-                    // Handle contact support
-                }
-                
-                Divider().background(Color.white.opacity(0.1))
                 
                 SettingsInfoRow(
                     title: "Version",

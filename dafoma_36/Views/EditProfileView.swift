@@ -95,12 +95,6 @@ struct EditProfileView: View {
                     .font(.system(size: 36, weight: .bold))
                     .foregroundColor(Color(hex: "152842"))
             }
-            
-            Button("Change Photo") {
-                // Handle photo change
-            }
-            .font(.subheadline)
-            .foregroundColor(Color(hex: "F8C029"))
         }
     }
     

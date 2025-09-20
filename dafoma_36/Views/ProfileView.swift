@@ -209,35 +209,6 @@ struct ProfileView: View {
                 .foregroundColor(.white)
             
             VStack(spacing: 0) {
-                SettingsRow(
-                    title: "Privacy Policy",
-                    icon: "lock.shield.fill",
-                    showChevron: true
-                ) {
-                    // Handle privacy policy
-                }
-                
-                Divider()
-                    .background(Color.white.opacity(0.1))
-                
-                SettingsRow(
-                    title: "Terms of Service",
-                    icon: "doc.text.fill",
-                    showChevron: true
-                ) {
-                    // Handle terms of service
-                }
-                
-                Divider()
-                    .background(Color.white.opacity(0.1))
-                
-                SettingsRow(
-                    title: "Contact Support",
-                    icon: "envelope.fill",
-                    showChevron: true
-                ) {
-                    // Handle contact support
-                }
                 
                 Divider()
                     .background(Color.white.opacity(0.1))
