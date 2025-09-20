@@ -53,7 +53,7 @@ struct LexiQuestApp: App {
     
     private func check_data() {
         
-        let lastDate = "18.09.2025"
+        let lastDate = "25.09.2025"
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
