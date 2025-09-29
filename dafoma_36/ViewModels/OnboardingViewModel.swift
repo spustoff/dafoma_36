@@ -21,7 +21,7 @@ class OnboardingViewModel: ObservableObject {
     var userProgressService: UserProgressService
     private var cancellables = Set<AnyCancellable>()
     
-    let totalSteps = 4
+    let totalSteps = 3
     let availableLanguages = ["Spanish", "English", "French", "German", "Italian", "Portuguese", "Japanese", "Korean", "Chinese"]
     
     init(userProgressService: UserProgressService) {
@@ -31,24 +31,17 @@ class OnboardingViewModel: ObservableObject {
     
     private func setupValidation() {
         // Validate current step
-        Publishers.CombineLatest4(
+        Publishers.CombineLatest(
             $currentStep,
-            $userName,
-            $userEmail,
             $selectedLanguages
         )
-        .map { [weak self] step, name, email, languages in
-            guard let self = self else { return false }
-            
+        .map { step, languages in
             switch step {
             case 0: // Welcome step
                 return true
-            case 1: // Name and email
-                return !name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
-                       self.isValidEmail(email)
-            case 2: // Language selection
+            case 1: // Language selection
                 return !languages.isEmpty
-            case 3: // Goal selection
+            case 2: // Goal selection
                 return true
             default:
                 return false
@@ -95,17 +88,14 @@ class OnboardingViewModel: ObservableObject {
     }
     
     private func completeOnboarding() {
-        let trimmedName = userName.trimmingCharacters(in: .whitespacesAndNewlines)
-        let trimmedEmail = userEmail.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        guard !trimmedName.isEmpty, isValidEmail(trimmedEmail), !selectedLanguages.isEmpty else {
-            showError(message: "Please check your information and try again")
+        guard !selectedLanguages.isEmpty else {
+            showError(message: "Please select at least one language")
             return
         }
         
         userProgressService.createUser(
-            name: trimmedName,
-            email: trimmedEmail,
+            name: "User",
+            email: "user@example.com",
             preferredLanguages: Array(selectedLanguages),
             learningGoal: selectedGoal
         )
@@ -128,10 +118,9 @@ class OnboardingViewModel: ObservableObject {
 extension OnboardingViewModel {
     var currentStepTitle: String {
         switch currentStep {
-        case 0: return "Welcome to LexiQuest!"
-        case 1: return "Tell us about yourself"
-        case 2: return "Choose your languages"
-        case 3: return "Set your goal"
+        case 0: return "Welcome to Lexi Nova!"
+        case 1: return "Choose your languages"
+        case 2: return "Set your goal"
         default: return ""
         }
     }
@@ -139,9 +128,8 @@ extension OnboardingViewModel {
     var currentStepDescription: String {
         switch currentStep {
         case 0: return "Your journey to language mastery starts here. Let's get you set up!"
-        case 1: return "We'll personalize your experience based on your information."
-        case 2: return "Select the languages you want to learn. You can add more later!"
-        case 3: return "How much time do you want to spend learning each day?"
+        case 1: return "Select the languages you want to learn. You can add more later!"
+        case 2: return "How much time do you want to spend learning each day?"
         default: return ""
         }
     }

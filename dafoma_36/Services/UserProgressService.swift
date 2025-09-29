@@ -205,3 +205,4 @@ class UserProgressService: ObservableObject {
         return max(1, xp / 100 + 1)
     }
 }
+

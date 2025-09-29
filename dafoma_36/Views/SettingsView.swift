@@ -330,3 +330,4 @@ struct SettingsInfoRow: View {
     SettingsView()
         .environmentObject(UserProgressService())
 }
+

@@ -447,3 +447,4 @@ struct EmptyAchievementsView: View {
     ProgressView()
         .environmentObject(UserProgressService())
 }
+

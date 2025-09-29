@@ -129,3 +129,4 @@ struct StreakData: Codable {
         lastActiveDate = now
     }
 }
+

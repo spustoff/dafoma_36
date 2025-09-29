@@ -42,14 +42,11 @@ struct OnboardingView: View {
                         WelcomeStepView()
                             .tag(0)
                         
-                        PersonalInfoStepView(viewModel: viewModel)
+                        LanguageSelectionStepView(viewModel: viewModel)
                             .tag(1)
                         
-                        LanguageSelectionStepView(viewModel: viewModel)
-                            .tag(2)
-                        
                         GoalSelectionStepView(viewModel: viewModel)
-                            .tag(3)
+                            .tag(2)
                     }
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                     .animation(.easeInOut(duration: 0.3), value: viewModel.currentStep)
@@ -93,7 +90,7 @@ struct WelcomeStepView: View {
                     .font(.title2)
                     .foregroundColor(.white.opacity(0.8))
                 
-                Text("LexiQuest Nacional")
+                Text("Lexi Nova Nacional")
                     .font(.largeTitle)
                     
                     .foregroundColor(.white)
@@ -110,37 +107,6 @@ struct WelcomeStepView: View {
     }
 }
 
-struct PersonalInfoStepView: View {
-    @ObservedObject var viewModel: OnboardingViewModel
-    
-    var body: some View {
-        VStack(spacing: 30) {
-            StepHeader(
-                title: viewModel.currentStepTitle,
-                description: viewModel.currentStepDescription
-            )
-            
-            VStack(spacing: 20) {
-                CustomTextField(
-                    title: "Your Name",
-                    text: $viewModel.userName,
-                    placeholder: "Enter your name"
-                )
-                
-                CustomTextField(
-                    title: "Email Address",
-                    text: $viewModel.userEmail,
-                    placeholder: "Enter your email"
-                )
-                .keyboardType(.emailAddress)
-                .autocapitalization(.none)
-            }
-            .padding(.horizontal, 20)
-            
-            Spacer()
-        }
-    }
-}
 
 struct LanguageSelectionStepView: View {
     @ObservedObject var viewModel: OnboardingViewModel

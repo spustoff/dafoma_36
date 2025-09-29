@@ -164,3 +164,4 @@ class LessonService: ObservableObject {
                             language: "French", iconName: "waveform", color: "#F8C029", lessons: lessons)
     }
 }
+

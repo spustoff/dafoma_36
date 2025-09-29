@@ -318,3 +318,4 @@ struct LessonRowView: View {
         .environmentObject(UserProgressService())
         .environmentObject(LessonService())
 }
+

@@ -64,3 +64,4 @@ enum LearningGoal: String, CaseIterable, Codable {
         }
     }
 }
+

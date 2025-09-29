@@ -112,3 +112,4 @@ struct LearningModule: Codable, Identifiable {
         self.completionPercentage = completionPercentage
     }
 }
+

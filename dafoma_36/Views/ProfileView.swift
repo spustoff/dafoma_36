@@ -317,3 +317,4 @@ struct SettingsRow: View {
     ProfileView()
         .environmentObject(UserProgressService())
 }
+

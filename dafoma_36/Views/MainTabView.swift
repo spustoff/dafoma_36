@@ -142,3 +142,4 @@ struct TabBarItem: View {
     MainTabView()
         .environmentObject(UserProgressService())
 }
+

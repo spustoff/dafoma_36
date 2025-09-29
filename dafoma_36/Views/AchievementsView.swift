@@ -427,3 +427,4 @@ struct AchievementDetailView: View {
     AchievementsView()
         .environmentObject(UserProgressService())
 }
+
